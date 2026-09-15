@@ -1,0 +1,198 @@
+baseURL: "https://JerichoCheng.github.io/"
+theme: "PaperMod"
+paginate: 10
+
+defaultContentLanguage: zh # 默认语言（决定哪个语言不带/en/或/zh/前缀，直接挂在根域名下）
+defaultContentLanguageInSubdir: false
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+googleAnalytics: "G-B2ST07RRZD" # 如需接入GA4，填入G-XXXXXXX，不用则留空
+
+minify:
+  disableXML: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # 给搜索功能用（Fuse.js）
+
+# ---------- 语言无关的通用配置 ----------
+params:
+  env: production
+  title: "Jericho's Tech Blog 程科玮的技术博客"
+  description: "Recording technical learning and project practices 记录技术学习与项目实践"
+  keywords: [Blog, Tech, Programming]
+  author: "Jericho Cheng"
+  DateFormat: "2006-01-02"
+  defaultTheme: auto # auto / light / dark
+  disableThemeToggle: false
+  disableLangToggle: false # 是否隐藏语言切换按钮，false=显示
+  displayFullLangName: true # 语言切换按钮显示"中文/English"而不是"Zh/En"
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: true # 配合comments.html里的giscus使用
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: false
+
+  assets:
+    disableHLJS: true # 使用Hugo内置的Chroma代码高亮，不用highlight.js
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+
+  label:
+    text: "Jericho's Tech Blog 程科玮的技术博客"
+    icon: /favicon.ico
+    iconHeight: 35
+
+  profileMode:
+    enabled: false
+    title: "Hello, I'm Jericho (Kewei) Cheng<br>你好，我是程科玮"
+    subtitle: "Passionate about Robotics and Intelligent Systems / Sharing Learning and Practice 热衷于机器人与智能系统 / 分享学习与实践"
+    imageUrl: "<img location>"
+    imageWidth: 120
+    imageHeight: 120
+    buttons:
+      - name: Posts
+        url: posts
+      - name: Tags
+        url: tags
+
+  socialIcons: # 跳转到你本人账号主页的图标，跟语言无关，两个语言版本共用
+    - name: email
+      url: "mailto:chengkewei77@gmail.com"
+    - name: github
+      url: "https://github.com/JerichoCheng"
+    - name: LinkedIn
+      url: "https://www.linkedin.com/in/jericho-cheng-0086b2377/"
+    - name: Instagram
+      url: "https://www.instagram.com/ambi.silent.jsc/"
+
+  editPost:
+    URL: "https://github.com/JerichoCheng/JerichoCheng.github.io/tree/main/content"
+    Text: "Edit this post on GitHub 在GitHub上编辑此文章"
+    appendFilePath: true
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+# ---------- 每种语言各自的标题/首页文案/菜单 ----------
+languages:
+  zh:
+    label: "中文"
+    locale: "zh-CN"
+    weight: 1
+    title: "我的技术博客"
+    params:
+      description: "记录技术学习与项目实践"
+      homeInfoParams:
+        Title: "欢迎来到我的技术博客 👋"
+        Content: >
+          这里记录我在编程、系统设计与工程实践中的学习笔记与项目复盘。
+      editPost:
+        Text: "在GitHub上修正这篇文章"
+    menus:
+      main:
+        - identifier: posts
+          name: 文章
+          url: /posts/
+          weight: 10
+        - identifier: projects
+          name: 项目
+          url: /projects/
+          weight: 15
+        - identifier: tags
+          name: 标签
+          url: /tags/
+          weight: 20
+        - identifier: archives
+          name: 归档
+          url: /archives/
+          weight: 30
+        - identifier: about
+          name: 关于
+          url: /about/
+          weight: 40
+        - identifier: search
+          name: 搜索
+          url: /search/
+          weight: 50
+
+  en:
+    label: "English"
+    locale: "en-US"
+    weight: 2
+    title: "My Tech Blog"
+    params:
+      description: "Notes on programming, system design and engineering practice."
+      homeInfoParams:
+        Title: "Welcome to my tech blog 👋"
+        Content: >
+          This is where I write up learning notes and project retrospectives in programming, system design, and engineering practice.
+      editPost:
+        Text: "Suggest an edit on GitHub"
+    menus:
+      main:
+        - identifier: posts
+          name: Posts
+          url: /en/posts/
+          weight: 10
+        - identifier: projects
+          name: Projects
+          url: /en/projects/
+          weight: 15
+        - identifier: tags
+          name: Tags
+          url: /en/tags/
+          weight: 20
+        - identifier: archives
+          name: Archive
+          url: /en/archives/
+          weight: 30
+        - identifier: about
+          name: About
+          url: /en/about/
+          weight: 40
+        - identifier: search
+          name: Search
+          url: /en/search/
+          weight: 50
+
+pygmentsUseClasses: true
+markup:
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+    style: monokai
+  goldmark:
+    renderer:
+      unsafe: true # 允许在Markdown中写原生HTML（比如KaTeX公式容器）
+
+taxonomies:
+  tag: tags
+  category: categories

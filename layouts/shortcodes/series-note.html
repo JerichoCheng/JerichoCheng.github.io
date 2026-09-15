@@ -1,0 +1,12 @@
+<div style="
+  border-left: 3px solid var(--primary);
+  background: var(--code-bg);
+  border-radius: var(--radius);
+  padding: 0.8em 1em;
+  margin: 1.2em 0;
+  font-size: 0.95em;
+  color: var(--secondary);
+">
+  {{ with .Get "text" }}{{ . }}{{ else }}这是「{{ .Get "project" }}」的子模块复盘之一，完整项目背景见{{ end }}
+  <a href="{{ .Get "link" }}">{{ .Get "linktext" }}</a>。
+</div>

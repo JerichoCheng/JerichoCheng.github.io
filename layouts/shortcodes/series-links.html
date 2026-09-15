@@ -1,0 +1,12 @@
+<div style="
+  border: 1px solid var(--border);
+  background: var(--entry);
+  border-radius: var(--radius);
+  padding: 1em 1.2em;
+  margin: 1.5em 0;
+">
+  <strong>{{ with .Get "title" }}{{ . }}{{ else }}延伸阅读：技术细节{{ end }}</strong>
+  <div style="margin-top: 0.5em; color: var(--content);">
+    {{ .Inner }}
+  </div>
+</div>
